@@ -1,16 +1,16 @@
 #!/usr/bin/php
 <?php
-echo "Removing cPanel Trial Banners...";
+echo "Removing cPanel Trial Banners... <br>";
 $css = file_get_contents("/usr/local/cpanel/base/frontend/jupiter/_assets/css/master-ltr.cmb.min.css");
 if (strpos($css, "#trialWarningBlock{display:none;}") !== false) 
 {
-    echo "cPanel trial banner already removed!";
+    echo "cPanel trial banner already removed! <br>";
 } else {
     file_put_contents("/usr/local/cpanel/base/frontend/jupiter/_assets/css/master-ltr.cmb.min.css",$css . "#trialWarningBlock{display:none;}");
     $ltr = file_get_contents("/usr/local/cpanel/whostmgr/docroot/styles/master-ltr.cmb.min.css");
     if (strpos($ltr, "#divTrialLicenseWarning{display:none}") == false) {
         file_put_contents("/usr/local/cpanel/whostmgr/docroot/styles/master-ltr.cmb.min.css",$ltr . "#divTrialLicenseWarning{display:none}");
     }
-    echo "cPanel trial banner removed!";
+    echo "cPanel trial banner removed! <br>";
 }
 ?>
